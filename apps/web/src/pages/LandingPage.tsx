@@ -20,7 +20,7 @@ const LandingPage: React.FC = () => {
           >
             Entrar
           </Link>
-          <Link to="/register" className="btn-primary">
+          <Link to="/register" className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
             Criar conta
           </Link>
         </div>
@@ -52,7 +52,7 @@ const LandingPage: React.FC = () => {
             </Link>
             <Link
               to="/demo"
-              className="btn-secondary"
+              className="bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg font-medium hover:bg-gray-50 transition-colors"
             >
               Ver exemplo
             </Link>

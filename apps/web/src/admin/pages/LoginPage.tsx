@@ -48,7 +48,7 @@ const AdminLoginPage: React.FC = () => {
                 type="email"
                 autoComplete="email"
                 required
-                className="input-field"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="admin@pocky.me"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}

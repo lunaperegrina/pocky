@@ -3,7 +3,8 @@
     "allow": [
       "WebFetch(domain:github.com)",
       "WebSearch",
-      "Bash(cp:*)"
+      "Bash(cp:*)",
+      "Bash(bun run dev)"
     ],
     "deny": [],
     "ask": []

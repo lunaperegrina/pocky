@@ -60,10 +60,10 @@ const ReportsPage: React.FC = () => {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      pending: { label: 'Pendente', class: 'status-suspended' },
-      investigating: { label: 'Investigando', class: 'status-active' },
-      resolved: { label: 'Resolvido', class: 'status-inactive' },
-      rejected: { label: 'Rejeitado', class: 'status-banned' },
+      pending: { label: 'Pendente', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case suspended in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      investigating: { label: 'Investigando', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case active in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      resolved: { label: 'Resolvido', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case inactive in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      rejected: { label: 'Rejeitado', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case banned in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
     };
 
     const config = statusConfig[status as keyof typeof statusConfig];
@@ -72,9 +72,9 @@ const ReportsPage: React.FC = () => {
 
   const getPriorityBadge = (priority: string) => {
     const priorityConfig = {
-      low: { label: 'Baixa', class: 'status-inactive' },
-      medium: { label: 'Média', class: 'status-suspended' },
-      high: { label: 'Alta', class: 'status-banned' },
+      low: { label: 'Baixa', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case inactive in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      medium: { label: 'Média', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case suspended in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      high: { label: 'Alta', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case banned in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
     };
 
     const config = priorityConfig[priority as keyof typeof priorityConfig];
@@ -119,7 +119,7 @@ const ReportsPage: React.FC = () => {
 
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Total de Reportes</p>
@@ -131,7 +131,7 @@ const ReportsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Pendentes</p>
@@ -143,7 +143,7 @@ const ReportsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Em Investigação</p>
@@ -155,7 +155,7 @@ const ReportsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-gray-600">Resolvidos</p>
@@ -169,7 +169,7 @@ const ReportsPage: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <label className="text-sm font-medium text-gray-700">Status:</label>
@@ -194,7 +194,7 @@ const ReportsPage: React.FC = () => {
       {/* Reports List */}
       <div className="space-y-4">
         {filteredReports.map((report) => (
-          <div key={report.id} className="admin-card">
+          <div key={report.id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-3">

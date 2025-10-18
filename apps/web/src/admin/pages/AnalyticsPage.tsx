@@ -69,7 +69,7 @@ const AnalyticsPage: React.FC = () => {
       {/* Overview Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {overviewStats.map((stat) => (
-          <div key={stat.name} className="admin-card">
+          <div key={stat.name} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
@@ -90,7 +90,7 @@ const AnalyticsPage: React.FC = () => {
       {/* Charts Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Profiles */}
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Perfis Mais Populares</h2>
             <EyeIcon className="w-5 h-5 text-gray-400" />
@@ -117,7 +117,7 @@ const AnalyticsPage: React.FC = () => {
         </div>
 
         {/* Device Analytics */}
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Dispositivos</h2>
             <DevicePhoneMobileIcon className="w-5 h-5 text-gray-400" />
@@ -145,7 +145,7 @@ const AnalyticsPage: React.FC = () => {
       </div>
 
       {/* Geographic Distribution */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-lg font-semibold text-gray-900">Distribuição Geográfica</h2>
           <GlobeAltIcon className="w-5 h-5 text-gray-400" />
@@ -188,7 +188,7 @@ const AnalyticsPage: React.FC = () => {
 
       {/* Traffic Sources */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-6">Fontes de Tráfego</h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -210,7 +210,7 @@ const AnalyticsPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-6">Performance</h2>
           <div className="space-y-4">
             <div className="flex items-center justify-between">
@@ -234,7 +234,7 @@ const AnalyticsPage: React.FC = () => {
       </div>
 
       {/* Export Options */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-6">Exportar Dados</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">

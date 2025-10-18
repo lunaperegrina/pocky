@@ -97,7 +97,7 @@ const ProfilePage: React.FC = () => {
                   <input
                     type="text"
                     value={mockProfile.displayName}
-                    className="input-field"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
 
@@ -236,7 +236,7 @@ const ProfilePage: React.FC = () => {
 
         {/* Save button */}
         <div className="mt-8 flex justify-end">
-          <button className="btn-primary">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
             Salvar alterações
           </button>
         </div>

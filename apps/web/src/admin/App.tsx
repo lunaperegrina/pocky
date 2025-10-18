@@ -1,4 +1,3 @@
-import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import DashboardPage from './pages/DashboardPage';
@@ -8,7 +7,7 @@ import ReportsPage from './pages/ReportsPage';
 import SettingsPage from './pages/SettingsPage';
 import LoginPage from './pages/LoginPage';
 
-function AdminApp() {
+export function AdminApp() {
   // TODO: Implementar lógica de autenticação admin
   const isAdmin = true; // Temporário
 

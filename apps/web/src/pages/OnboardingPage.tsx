@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,7 +20,7 @@ const socialLinkSchema = z.object({
 
 type SocialLink = z.infer<typeof socialLinkSchema>;
 
-const OnboardingPage: React.FC = () => {
+function OnboardingPage() {
   const [step, setStep] = useState(1);
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>([]);
   const [newLink, setNewLink] = useState<SocialLink>({ platform: 'github', username: '' });
@@ -140,7 +140,7 @@ const OnboardingPage: React.FC = () => {
                       {...registerProfile('avatarUrl')}
                       type="url"
                       placeholder="https://exemplo.com/avatar.jpg"
-                      className="input-field"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                     />
                     {profileErrors.avatarUrl && (
                       <p className="text-red-500 text-sm mt-1">{profileErrors.avatarUrl.message}</p>
@@ -157,7 +157,7 @@ const OnboardingPage: React.FC = () => {
                   {...registerProfile('displayName')}
                   type="text"
                   placeholder="Seu nome"
-                  className="input-field"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
                 />
                 {profileErrors.displayName && (
                   <p className="text-red-500 text-sm mt-1">{profileErrors.displayName.message}</p>
@@ -180,11 +180,11 @@ const OnboardingPage: React.FC = () => {
               </div>
 
               <div className="flex justify-between">
-                <Link to="/login" className="btn-secondary flex items-center gap-2">
+                <Link to="/login" className="bg-white text-black border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center gap-2">
                   <ArrowLeftIcon className="w-4 h-4" />
                   Voltar
                 </Link>
-                <button type="submit" className="btn-primary flex items-center gap-2">
+                <button type="submit" className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2">
                   Próximo
                   <ArrowRightIcon className="w-4 h-4" />
                 </button>
@@ -270,7 +270,7 @@ const OnboardingPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="btn-secondary flex items-center gap-2"
+                className="bg-white text-black border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center gap-2"
               >
                 <ArrowLeftIcon className="w-4 h-4" />
                 Voltar
@@ -279,7 +279,7 @@ const OnboardingPage: React.FC = () => {
                 type="button"
                 onClick={onFinishOnboarding}
                 disabled={isLoading || socialLinks.length === 0}
-                className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? 'Finalizando...' : 'Finalizar'}
               </button>

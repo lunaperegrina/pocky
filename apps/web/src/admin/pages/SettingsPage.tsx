@@ -11,7 +11,7 @@ const SettingsPage: React.FC = () => {
       </div>
 
       {/* General Settings */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
           <Cog6ToothIcon className="w-5 h-5 text-gray-600" />
           <h2 className="text-lg font-semibold text-gray-900">Configurações Gerais</h2>
@@ -25,7 +25,7 @@ const SettingsPage: React.FC = () => {
             <input
               type="text"
               defaultValue="Pocky"
-              className="input-field"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
@@ -47,7 +47,7 @@ const SettingsPage: React.FC = () => {
             <input
               type="text"
               placeholder="pocky.me"
-              className="input-field"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
@@ -64,7 +64,7 @@ const SettingsPage: React.FC = () => {
       </div>
 
       {/* Security Settings */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
           <ShieldCheckIcon className="w-5 h-5 text-gray-600" />
           <h2 className="text-lg font-semibold text-gray-900">Segurança</h2>
@@ -117,7 +117,7 @@ const SettingsPage: React.FC = () => {
       </div>
 
       {/* Notification Settings */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
           <BellIcon className="w-5 h-5 text-gray-600" />
           <h2 className="text-lg font-semibold text-gray-900">Notificações</h2>
@@ -161,14 +161,14 @@ const SettingsPage: React.FC = () => {
             <input
               type="email"
               defaultValue="admin@pocky.me"
-              className="input-field"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
         </div>
       </div>
 
       {/* Regional Settings */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
           <GlobeAltIcon className="w-5 h-5 text-gray-600" />
           <h2 className="text-lg font-semibold text-gray-900">Configurações Regionais</h2>
@@ -179,7 +179,7 @@ const SettingsPage: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Fuso Horário
             </label>
-            <select className="input-field">
+            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option>America/Sao_Paulo (UTC-3)</option>
               <option>America/New_York (UTC-5)</option>
               <option>Europe/London (UTC+0)</option>
@@ -191,7 +191,7 @@ const SettingsPage: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Idioma Padrão
             </label>
-            <select className="input-field">
+            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option>Português (Brasil)</option>
               <option>English (US)</option>
               <option>Español</option>
@@ -202,7 +202,7 @@ const SettingsPage: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Formato de Data
             </label>
-            <select className="input-field">
+            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option>DD/MM/YYYY</option>
               <option>MM/DD/YYYY</option>
               <option>YYYY-MM-DD</option>
@@ -213,7 +213,7 @@ const SettingsPage: React.FC = () => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Moeda
             </label>
-            <select className="input-field">
+            <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
               <option>BRL (R$)</option>
               <option>USD ($)</option>
               <option>EUR (€)</option>
@@ -224,7 +224,7 @@ const SettingsPage: React.FC = () => {
 
       {/* Save Button */}
       <div className="flex justify-end">
-        <button className="btn-primary">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
           Salvar Configurações
         </button>
       </div>

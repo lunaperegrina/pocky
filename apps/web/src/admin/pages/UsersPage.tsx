@@ -62,10 +62,10 @@ const UsersPage: React.FC = () => {
 
   const getStatusBadge = (status: string) => {
     const statusClasses = {
-      active: 'status-active',
-      inactive: 'status-inactive',
-      suspended: 'status-suspended',
-      banned: 'status-banned',
+      active: 'px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800',
+      inactive: 'px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800',
+      suspended: 'px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800',
+      banned: 'px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800',
     };
 
     const statusLabels = {
@@ -98,13 +98,13 @@ const UsersPage: React.FC = () => {
           <h1 className="text-2xl font-bold text-gray-900">Usuários</h1>
           <p className="text-gray-600">Gerencie todos os usuários cadastrados</p>
         </div>
-        <button className="btn-primary">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
           Adicionar Usuário
         </button>
       </div>
 
       {/* Filters */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4 flex-1">
             <div className="relative flex-1 max-w-md">
@@ -138,7 +138,7 @@ const UsersPage: React.FC = () => {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="input-field"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="all">Todos</option>
                   <option value="active">Ativos</option>
@@ -151,7 +151,7 @@ const UsersPage: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Período de cadastro
                 </label>
-                <select className="input-field">
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                   <option value="">Todos os períodos</option>
                   <option value="today">Hoje</option>
                   <option value="week">Esta semana</option>
@@ -163,7 +163,7 @@ const UsersPage: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Ordenar por
                 </label>
-                <select className="input-field">
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                   <option value="newest">Mais recentes</option>
                   <option value="oldest">Mais antigos</option>
                   <option value="name">Nome</option>

@@ -1,16 +1,15 @@
-import React from 'react';
 import {
   UsersIcon,
   UserGroupIcon,
   LinkIcon,
   EyeIcon,
   ChartBarIcon,
-  TrendingUpIcon,
+  ArrowTrendingUpIcon,
   GlobeAltIcon,
   DevicePhoneMobileIcon,
 } from '@heroicons/react/24/outline';
 
-const DashboardPage: React.FC = () => {
+function DashboardPage() {
   const stats = [
     {
       name: 'Total de Usuários',
@@ -67,7 +66,7 @@ const DashboardPage: React.FC = () => {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
-          <div key={stat.name} className="admin-card">
+          <div key={stat.name} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">{stat.name}</p>
@@ -122,7 +121,7 @@ const DashboardPage: React.FC = () => {
         </div>
 
         {/* Top Platforms */}
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Plataformas Populares</h2>
             <ChartBarIcon className="w-5 h-5 text-gray-400" />
@@ -147,7 +146,7 @@ const DashboardPage: React.FC = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="admin-card">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-6">Ações Rápidas</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
@@ -160,7 +159,7 @@ const DashboardPage: React.FC = () => {
 
           <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors text-left">
             <div className="flex items-center gap-3 mb-2">
-              <TrendingUpIcon className="w-5 h-5 text-green-600" />
+              <ArrowTrendingUpIcon className="w-5 h-5 text-green-600" />
               <span className="font-medium">Ver Analytics</span>
             </div>
             <p className="text-sm text-gray-600">Analise o desempenho da plataforma</p>
@@ -178,7 +177,7 @@ const DashboardPage: React.FC = () => {
 
       {/* Device Analytics */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Dispositivos</h2>
             <DevicePhoneMobileIcon className="w-5 h-5 text-gray-400" />
@@ -199,7 +198,7 @@ const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="admin-card">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg font-semibold text-gray-900">Status do Sistema</h2>
             <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -207,15 +206,15 @@ const DashboardPage: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-600">API</span>
-              <span className="status-active">Online</span>
+              <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Online</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-600">Database</span>
-              <span className="status-active">Operacional</span>
+              <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Operacional</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-gray-600">Storage</span>
-              <span className="status-active">Normal</span>
+              <span className="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Normal</span>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -72,7 +72,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 key={item.name}
                 to={item.href}
                 className={`
-                  ${isActive(item.href) ? 'sidebar-link-active' : 'sidebar-link'}
+                  ${isActive(item.href)
+                    ? 'flex items-center gap-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700'
+                    : 'flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors'
+                  }
                 `}
                 onClick={() => setSidebarOpen(false)}
               >
@@ -83,7 +86,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-200">
-            <button className="sidebar-link w-full">
+            <button className="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors w-full">
               <ArrowRightOnRectangleIcon className="w-5 h-5" />
               Sair
             </button>
