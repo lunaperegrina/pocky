@@ -60,10 +60,10 @@ const ReportsPage: React.FC = () => {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      pending: { label: 'Pendente', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case suspended in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
-      investigating: { label: 'Investigando', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case active in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
-      resolved: { label: 'Resolvido', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case inactive in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
-      rejected: { label: 'Rejeitado', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case banned in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      pending: { label: 'Pendente', class: 'px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800' },
+      investigating: { label: 'Investigando', class: 'px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800' },
+      resolved: { label: 'Resolvido', class: 'px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800' },
+      rejected: { label: 'Rejeitado', class: 'px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800' },
     };
 
     const config = statusConfig[status as keyof typeof statusConfig];
@@ -72,9 +72,9 @@ const ReportsPage: React.FC = () => {
 
   const getPriorityBadge = (priority: string) => {
     const priorityConfig = {
-      low: { label: 'Baixa', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case inactive in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
-      medium: { label: 'Média', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case suspended in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
-      high: { label: 'Alta', class: px-2 py-1 rounded-full text-xs font-medium bg-'$(  case banned in    active) echo 'green-100 text-green-800';;    inactive) echo 'gray-100 text-gray-800';;    suspended) echo 'yellow-100 text-yellow-800';;    banned) echo 'red-100 text-red-800';;  esac) },
+      low: { label: 'Baixa', class: 'px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800' },
+      medium: { label: 'Média', class: 'px-2 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800' },
+      high: { label: 'Alta', class: 'px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800' },
     };
 
     const config = priorityConfig[priority as keyof typeof priorityConfig];
