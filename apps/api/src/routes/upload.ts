@@ -1,14 +1,8 @@
 import { Hono } from 'hono';
-import { zValidator } from '@hono/zod-validator';
-import { z } from 'zod';
 
 const uploadRoutes = new Hono();
 
-const uploadAvatarSchema = z.object({
-  file: z.any(),
-});
-
-uploadRoutes.post('/avatar', zValidator('json', uploadSchema), async (c) => {
+uploadRoutes.post('/avatar', async (c) => {
   try {
     const body = await c.req.parseBody();
     const file = body.file as File;

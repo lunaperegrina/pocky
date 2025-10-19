@@ -1,71 +1,78 @@
-import { Hono } from 'hono';
-import { cors } from 'hono/cors';
-import { logger } from 'hono/logger';
-import { authRoutes } from './routes/auth';
-import { profileRoutes } from './routes/profiles';
-import { linkRoutes } from './routes/links';
-import { analyticsRoutes } from './routes/analytics';
-import { adminRoutes } from './routes/admin';
-import { uploadRoutes } from './routes/upload';
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import { logger } from "hono/logger";
+import * as routes from "./routes";
+import db from "./db/client"; // your drizzle instance
+import { auth } from "./auth";
 
-const app = new Hono();
+const app = new Hono<{
+  Variables: {
+    user: typeof auth.$Infer.Session.user | null;
+    session: typeof auth.$Infer.Session.session | null;
+  };
+}>();
 
 // CORS configuration
-app.use('*', cors({
-  origin: ['http://localhost:3000', 'http://localhost:3002'],
-  credentials: true,
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-}));
+app.use(
+  "*",
+  cors({
+    origin: ["http://localhost:3000", "http://localhost:3002"],
+    credentials: true,
+    allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  }),
+);
 
-app.use('*', logger());
+app.use("*", logger());
 
 // Better Auth handler
-app.all('/api/auth/*', authRoutes);
+app.on(["POST", "GET"], "/api/auth/*", (c) => {
+  return auth.handler(c.req.raw);
+});
 
 // API routes
-app.route('/api/profiles', profileRoutes);
-app.route('/api/links', linkRoutes);
-app.route('/api/analytics', analyticsRoutes);
-app.route('/api/admin', adminRoutes);
-app.route('/api/upload', uploadRoutes);
+app.route("/api/profiles", routes.profileRoutes);
+app.route("/api/links", routes.linkRoutes);
+app.route("/api/analytics", routes.analyticsRoutes);
+app.route("/api/admin", routes.adminRoutes);
+app.route("/api/upload", routes.uploadRoutes);
 
-app.get('/', (c) => {
-  return c.json({ message: 'Pocky API v1.0.0' });
+app.get("/", (c) => {
+  return c.json({ message: "Pocky API v1.0.0" });
 });
 
-app.get('/health', (c) => {
-  return c.json({ status: 'ok', timestamp: new Date().toISOString() });
+app.get("/health", (c) => {
+  return c.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-app.get('/api', (c) => {
+app.get("/api", (c) => {
   return c.json({
-    message: 'Pocky API v1.0.0',
+    message: "Pocky API v1.0.0",
     endpoints: {
-      auth: '/api/auth',
-      profiles: '/api/profiles',
-      links: '/api/links',
-      analytics: '/api/analytics',
-      admin: '/api/admin',
-      upload: '/api/upload',
-    }
+      auth: "/api/auth",
+      profiles: "/api/profiles",
+      links: "/api/links",
+      analytics: "/api/analytics",
+      admin: "/api/admin",
+      upload: "/api/upload",
+    },
   });
 });
 
 // Error handler
 app.onError((err, c) => {
-  console.error('Error:', err);
+  console.error("Error:", err);
   return c.json(
     {
-      error: 'Internal Server Error',
-      message: process.env.NODE_ENV === 'development' ? err.message : undefined
+      error: "Internal Server Error",
+      message: process.env.NODE_ENV === "development" ? err.message : undefined,
     },
-    500
+    500,
   );
 });
 
 // 404 handler
 app.notFound((c) => {
-  return c.json({ error: 'Not Found' }, 404);
+  return c.json({ error: "Not Found" }, 404);
 });
 
 const port = process.env.PORT || 3001;

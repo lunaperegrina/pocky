@@ -4,7 +4,9 @@
       "WebFetch(domain:github.com)",
       "WebSearch",
       "Bash(cp:*)",
-      "Bash(bun run dev)"
+      "Bash(bun run dev)",
+      "Bash(bun:*)",
+      "Bash(ln:*)"
     ],
     "deny": [],
     "ask": []

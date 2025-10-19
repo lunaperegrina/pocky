@@ -1,11 +1,11 @@
-import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db } from '@pocky/db';
-import { users, sessions } from '@pocky/db/schema';
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import db from "./db/client"; // your drizzle instance
+import { users, sessions } from "./db/schema";
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
-    provider: 'pg',
+    provider: "pg",
     schema: {
       users: users,
       sessions: sessions,
@@ -30,14 +30,14 @@ export const auth = betterAuth({
   },
   socialProviders: {
     // Adicionar providers de redes sociais no futuro
-    github: {
-      clientId: process.env.GITHUB_CLIENT_ID || '',
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
-    },
-    google: {
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-    },
+    // github: {
+    //   clientId: process.env.GITHUB_CLIENT_ID || '',
+    //   clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
+    // },
+    // google: {
+    //   clientId: process.env.GOOGLE_CLIENT_ID || '',
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
+    // },
   },
 });
 
