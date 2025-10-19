@@ -11,7 +11,8 @@
     "type-check": "tsc --noEmit",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "auth:generate": "bunx @better-auth/cli@latest generate --output ./src/db/schema/auth-schema.ts"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.1.11",

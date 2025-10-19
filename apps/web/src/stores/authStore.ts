@@ -1,12 +1,14 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import api from "../lib/api";
+import { authClient } from "../lib/auth-client";
 
 interface User {
   id: string;
   email: string;
   username: string;
+  name: string;
   displayName?: string;
+  image?: string;
   avatarUrl?: string;
   emailVerified?: boolean;
   createdAt?: string;
@@ -37,21 +39,31 @@ export const useAuthStore = create<AuthState>()(
       login: async (email: string, password: string) => {
         set({ isLoading: true });
         try {
-          const response = await api.post("api/auth/login", {
+          const { data } = await authClient.signIn.email({
             email,
             password,
           });
-          const { user } = response.data;
+
+          const userData: User = {
+            id: data.user.id,
+            email: data.user.email,
+            username: data.user.username || data.user.email.split('@')[0],
+            name: data.user.name,
+            displayName: data.user.name,
+            image: data.user.image,
+            avatarUrl: data.user.image,
+            emailVerified: data.user.emailVerified,
+            createdAt: data.user.createdAt?.toISOString(),
+          };
 
           set({
-            user,
+            user: userData,
             isAuthenticated: true,
             isLoading: false,
           });
         } catch (error: any) {
           set({ isLoading: false });
-          const message =
-            error.response?.data?.error || "Credenciais inválidas";
+          const message = error.message || "Credenciais inválidas";
           throw new Error(message);
         }
       },
@@ -59,31 +71,40 @@ export const useAuthStore = create<AuthState>()(
       register: async (email: string, password: string, username: string) => {
         set({ isLoading: true });
         try {
-          const response = await api.post("/auth/register", {
+          const { data } = await authClient.signUp.email({
             email,
             password,
-            username,
+            name: username,
           });
 
-          const { user } = response.data;
+          const userData: User = {
+            id: data.user.id,
+            email: data.user.email,
+            username: data.user.username || data.user.email.split('@')[0],
+            name: data.user.name,
+            displayName: data.user.name,
+            image: data.user.image,
+            avatarUrl: data.user.image,
+            emailVerified: data.user.emailVerified,
+            createdAt: data.user.createdAt?.toISOString(),
+          };
 
           set({
-            user,
+            user: userData,
             isAuthenticated: true,
             isLoading: false,
           });
         } catch (error: any) {
           set({ isLoading: false });
-          const message = error.response?.data?.error || "Erro ao criar conta";
+          const message = error.message || "Erro ao criar conta";
           throw new Error(message);
         }
       },
 
       logout: async () => {
         try {
-          await api.post("/auth/logout");
+          await authClient.signOut();
         } catch (error) {
-          // Ignorar erro no logout
           console.error("Logout error:", error);
         } finally {
           set({
@@ -96,14 +117,33 @@ export const useAuthStore = create<AuthState>()(
       checkAuth: async () => {
         set({ isLoading: true });
         try {
-          const response = await api.get("/auth/me");
-          const { user } = response.data;
+          const { data } = await authClient.getSession();
 
-          set({
-            user,
-            isAuthenticated: true,
-            isLoading: false,
-          });
+          if (data?.user) {
+            const userData: User = {
+              id: data.user.id,
+              email: data.user.email,
+              username: data.user.username || data.user.email.split('@')[0],
+              name: data.user.name,
+              displayName: data.user.name,
+              image: data.user.image,
+              avatarUrl: data.user.image,
+              emailVerified: data.user.emailVerified,
+              createdAt: data.user.createdAt?.toISOString(),
+            };
+
+            set({
+              user: userData,
+              isAuthenticated: true,
+              isLoading: false,
+            });
+          } else {
+            set({
+              user: null,
+              isAuthenticated: false,
+              isLoading: false,
+            });
+          }
         } catch (error) {
           set({
             user: null,
